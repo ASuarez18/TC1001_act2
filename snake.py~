@@ -63,7 +63,7 @@ def move():
     for body in snake:
         square(body.x, body.y, 9, 'black')
     
-    square(food.x, food.y, 9, color)
+    square(food.x, food.y, 9, c)
     update()
     ontimer(move, 100)
 
