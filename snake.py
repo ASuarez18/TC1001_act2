@@ -17,10 +17,12 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
-c= randint(0,4)
+c = randint(0,4)
+cs = randint(0,4)
+
 if c == 0:
     color = 'blue'
-elif c== 1:
+elif c == 1:
     color = 'cyan'
 elif c == 2:
     color = 'green'
@@ -29,6 +31,16 @@ elif c == 3:
 elif c == 4:
     color = 'fuchsia'
 
+if cs == 0:
+    colors = 'blue'
+elif cs == 1:
+    colors = 'cyan'
+elif cs == 2:
+    colors = 'green'
+elif cs == 3:
+    colors = 'aqua'
+elif cs == 4:
+    colors = 'fuchsia'
 
 def change(x, y):
     "Change snake direction."
@@ -61,11 +73,18 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, colors)
     
     square(food.x, food.y, 9, color)
     update()
     ontimer(move, 100)
+
+    if (-200 < food.x < 190 and -200 < food.y < 190):
+        food.x = food.x + randrange(-1, 1) * 10
+        food.y = food.y + randrange(-1, 1) * 10
+    else:
+        food.x = randrange(-1, 1) * 10
+        food.y = randrange(-1, 1) * 10
 
 setup(420, 420, 370, 0)
 hideturtle()
